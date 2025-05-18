@@ -18,6 +18,9 @@
         },
         {
             "path": "../../../domain-support/logger"
+        },
+        {
+            "path": "../../../container-support/webtech"
         }
     ]
 }

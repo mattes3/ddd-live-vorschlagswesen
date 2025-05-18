@@ -1,5 +1,5 @@
 {
-    "name": "@vorschlagswesen/dl-vorschlag",
+    "name": "@vorschlagswesen/dl-benutzer",
     "version": "1.0.0",
     "private": true,
     "scripts": {
@@ -13,7 +13,6 @@
     "exports": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
     "dependencies": {
-        "@vorschlagswesen/dl-benutzer": "workspace:^",
         "@vorschlagswesen/modellierung": "workspace:^",
         "ts-results-es": "^5.0.1",
         "ulid": "^3.0.0"

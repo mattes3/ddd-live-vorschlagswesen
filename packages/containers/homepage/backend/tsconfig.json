@@ -14,10 +14,10 @@
             "path": "../../../common-frontend/backend"
         },
         {
-            "path": "../../../domainlogic/vorschlag"
+            "path": "../../../domain-support/logger"
         },
         {
-            "path": "../../../domain-support/logger"
+            "path": "../../../container-support/webtech"
         }
     ]
 }

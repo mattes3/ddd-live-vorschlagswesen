@@ -6,14 +6,23 @@
             "@vorschlagswesen/common-frontend": [
                 "./packages/common-frontend/backend"
             ],
+            "@vorschlagswesen/ctr-homepage": [
+                "./packages/containers/homepage/backend"
+            ],
             "@vorschlagswesen/ctr-vorschlag": [
                 "./packages/containers/vorschlag/backend"
+            ],
+            "@vorschlagswesen/dl-benutzer": [
+                "./packages/domainlogic/benutzer"
             ],
             "@vorschlagswesen/dl-vorschlag": [
                 "./packages/domainlogic/vorschlag"
             ],
             "@vorschlagswesen/logger": [
                 "./packages/domain-support/logger"
+            ],
+            "@vorschlagswesen/modellierung": [
+                "./packages/domain-support/modellierung"
             ],
             "@vorschlagswesen/webtech": [
                 "./packages/container-support/webtech"

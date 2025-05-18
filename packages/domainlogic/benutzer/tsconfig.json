@@ -11,9 +11,6 @@
     ],
     "references": [
         {
-            "path": "../benutzer"
-        },
-        {
             "path": "../../domain-support/modellierung"
         }
     ]

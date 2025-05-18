@@ -10,10 +10,19 @@
             "path": "./container-support/webtech"
         },
         {
+            "path": "./containers/homepage/backend"
+        },
+        {
             "path": "./containers/vorschlag/backend"
         },
         {
             "path": "./domain-support/logger"
+        },
+        {
+            "path": "./domain-support/modellierung"
+        },
+        {
+            "path": "./domainlogic/benutzer"
         },
         {
             "path": "./domainlogic/vorschlag"
