@@ -120,6 +120,70 @@ importers:
         specifier: ^22.13.10
         version: 22.15.18
 
+  packages/containers/homepage:
+    dependencies:
+      '@hono/node-server':
+        specifier: ^1.13.8
+        version: 1.14.1(hono@4.7.10)
+      '@vorschlagswesen/common-frontend':
+        specifier: workspace:^
+        version: file:packages/common-frontend
+      '@vorschlagswesen/logger':
+        specifier: workspace:^
+        version: file:packages/domain-support/logger
+      '@vorschlagswesen/webtech':
+        specifier: workspace:^
+        version: file:packages/container-support/webtech
+      hono:
+        specifier: ^4.7.1
+        version: 4.7.10
+      pino:
+        specifier: ^9.6.0
+        version: 9.6.0
+      ts-results-es:
+        specifier: ^5.0.1
+        version: 5.0.1
+      ulid:
+        specifier: ^3.0.0
+        version: 3.0.0
+    devDependencies:
+      '@radix-ui/colors':
+        specifier: ^3.0.0
+        version: 3.0.0
+      '@tailwindcss/aspect-ratio':
+        specifier: ^0.4.2
+        version: 0.4.2(tailwindcss@3.4.17)
+      '@tailwindcss/typography':
+        specifier: ^0.5.15
+        version: 0.5.16(tailwindcss@3.4.17)
+      '@types/mustache':
+        specifier: ^4.2.5
+        version: 4.2.6
+      '@types/node':
+        specifier: ^22.13.10
+        version: 22.15.18
+      nodemon:
+        specifier: ^3.0.3
+        version: 3.1.10
+      postcss:
+        specifier: ^8.5.3
+        version: 8.5.3
+      tailwindcss:
+        specifier: ^3.4.15
+        version: 3.4.17
+      vite:
+        specifier: ^5.0.11
+        version: 5.4.19(@types/node@22.15.18)
+      vite-plugin-static-copy:
+        specifier: ^1.0.0
+        version: 1.0.6(vite@5.4.19(@types/node@22.15.18))
+      vitest:
+        specifier: ^3.0.9
+        version: 3.1.3(@types/node@22.15.18)
+      windy-radix-palette:
+        specifier: ^2.0.0-beta.7
+        version: 2.0.0-beta.7(@radix-ui/colors@3.0.0)(tailwindcss@3.4.17)
+
   packages/containers/vorschlag:
     dependencies:
       '@hono/node-server':
@@ -861,6 +925,15 @@ packages:
 
   '@vitest/utils@3.1.3':
     resolution: {integrity: sha512-2Ltrpht4OmHO9+c/nmHtF09HWiyWdworqnHIwjfvDyWjuwKbdkcS9AnhsDn+8E2RM4x++foD1/tNuLPVvWG1Rg==}
+
+  '@vorschlagswesen/common-frontend@file:packages/common-frontend':
+    resolution: {directory: packages/common-frontend, type: directory}
+
+  '@vorschlagswesen/logger@file:packages/domain-support/logger':
+    resolution: {directory: packages/domain-support/logger, type: directory}
+
+  '@vorschlagswesen/webtech@file:packages/container-support/webtech':
+    resolution: {directory: packages/container-support/webtech, type: directory}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2527,6 +2600,29 @@ snapshots:
       '@vitest/pretty-format': 3.1.3
       loupe: 3.1.3
       tinyrainbow: 2.0.0
+
+  '@vorschlagswesen/common-frontend@file:packages/common-frontend':
+    dependencies:
+      '@floating-ui/utils': 0.2.9
+      '@shoelace-style/shoelace': 2.20.1(@floating-ui/utils@0.2.9)(@types/react@19.1.4)
+      '@types/react': 19.1.4
+      axios: 1.9.0
+      lit: 3.3.0
+      mustache: 4.2.0
+      radashi: 12.5.0
+    transitivePeerDependencies:
+      - debug
+
+  '@vorschlagswesen/logger@file:packages/domain-support/logger':
+    dependencies:
+      pino: 9.6.0
+      pino-pretty: 13.0.0
+
+  '@vorschlagswesen/webtech@file:packages/container-support/webtech':
+    dependencies:
+      hono: 4.7.10
+      jose: 5.10.0
+      radashi: 12.5.0
 
   acorn-jsx@5.3.2(acorn@8.14.1):
     dependencies:

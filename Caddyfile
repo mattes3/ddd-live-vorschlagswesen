@@ -1,0 +1,25 @@
+http://localhost:4000 {
+    log {
+        level ERROR
+        output stdout
+        format console
+    }
+
+    @vorschlag {
+        path /vorschlag/*
+    }
+
+    @home {
+        path /*
+    }
+
+    route {
+        reverse_proxy @vorschlag http://localhost:4042 {
+            header_up X-Forwarded-For {header.X-Forwarded-For}
+        }
+
+        reverse_proxy @home http://localhost:4041 {
+            header_up X-Forwarded-For {header.X-Forwarded-For}
+        }
+    }
+}

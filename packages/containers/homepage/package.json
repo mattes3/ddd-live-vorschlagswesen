@@ -1,10 +1,10 @@
 {
-    "name": "@vorschlagswesen/ctr-vorschlag",
+    "name": "@vorschlagswesen/ctr-homepage",
     "version": "1.0.0",
     "private": true,
     "scripts": {
         "dev": "nodemon",
-        "dev:backend": "NODE_ENV=development PORT=4042 dotenv -f .backend-env run node ./dist/backend/src/devServer.js",
+        "dev:backend": "NODE_ENV=development PORT=4041 dotenv -f .backend-env run node ./dist/backend/src/devServer.js",
         "dev:buildAndRunDevServer": "pnpm build && pnpm dev:backend",
         "build:backend": "cd backend && tsc",
         "build:frontend": "cd frontend && tsc && vite build --mode development && find ../dist/frontend -name \\*.map -delete -or -name \\*.d.ts -delete",
@@ -34,7 +34,6 @@
     "dependencies": {
         "@hono/node-server": "^1.13.8",
         "@vorschlagswesen/common-frontend": "workspace:^",
-        "@vorschlagswesen/dl-vorschlag": "workspace:^",
         "@vorschlagswesen/logger": "workspace:^",
         "@vorschlagswesen/webtech": "workspace:^",
         "hono": "^4.7.1",
