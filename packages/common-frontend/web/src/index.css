@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* From https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale */
+
+/*
+There are 12 steps in each scale. Each step was designed for at least one specific use case.
+
+This table is a simple overview of the most common use case for each step.
+However, there are many exceptions and caveats to factor in, which are covered
+in further detail below.
+
+Step    Use Case
+1       App background
+2       Subtle background
+3       UI element background
+4       Hovered UI element background
+5       Active / Selected UI element background
+6       Subtle borders and separators
+7       UI element border and focus rings
+8       Hovered UI element border
+9       Solid backgrounds
+10      Hovered solid backgrounds
+11      Low-contrast text
+12      High-contrast text
+*/
+
+.bg-app {
+    @apply bg-neutral-3;
+}
+
+.bg-subtle {
+    @apply bg-neutral-1;
+}
+
+.bg-ui-element {
+    @apply bg-neutral-2;
+}
+
+.bg-hovered-ui-element {
+    @apply bg-neutral-3;
+}
+
+.bg-active-ui-element {
+    @apply bg-neutral-5;
+}
+
+.border-subtle {
+    @apply border-neutral-6;
+}
+
+.divide-subtle {
+    @apply divide-neutral-6;
+}
+
+.border-ui-element {
+    @apply border-neutral-7;
+}
+
+.ring-ui-element {
+    @apply ring-neutral-7;
+}
+
+.border-ui-element-hovered {
+    @apply border-neutral-8;
+}
+
+.bg-solid {
+    @apply bg-neutral-9;
+}
+
+.bg-solid-hovered {
+    @apply bg-neutral-10;
+}
+
+/* default color for text */
+.text-default {
+    @apply text-neutral-12;
+}
+
+/* light color for text */
+.text-light {
+    @apply text-neutral-11;
+}
+
+/* text color and style for links */
+.text-link {
+    @apply font-medium text-secondary-6 visited:text-primary-6 hover:underline;
+}
+
+/* text color and style for labels in forms */
+.text-label {
+    @apply text-sm font-medium text-neutral-12;
+}
+
+.placeholder-input {
+    @apply placeholder-neutral-11;
+}
+
+.hyphens {
+    hyphens: auto;
+}
+
+.input-primary {
+    @apply bg-ui-element block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-neutral-6 text-neutral-12 placeholder-neutral-11 focus:ring-2 focus:ring-inset focus:ring-primary-10 sm:text-sm sm:leading-6;
+}
+
+.btn-primary {
+    @apply h-10 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-primary-11 hover:bg-primary-12 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-11;
+}
+
+.btn-primary-outline {
+    @apply h-10 inline-flex items-center px-4 py-2 border border-primary-5 shadow-sm text-base font-medium rounded-md text-primary-10 bg-transparent hover:bg-primary-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-10;
+}
+
+.btn-secondary {
+    @apply h-10 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-secondary-9 hover:bg-secondary-10 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-9;
+}
+
+.btn-secondary-outline {
+    @apply h-10 inline-flex items-center px-4 py-2 border border-secondary-5 shadow-sm text-base font-medium rounded-md text-secondary-9 bg-transparent hover:bg-secondary-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-9;
+}
+
+.btn-light {
+    @apply h-10 px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-primary-11 bg-neutral-1 hover:bg-neutral-3 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-1;
+}
+
+.form-range:focus::-webkit-slider-thumb {
+    box-shadow: none;
+}
+
+.form-range:focus::-moz-range-thumb {
+    box-shadow: none;
+}
+
+.form-range::-moz-focus-outer {
+    border: 0;
+}
+
+.form-range::-webkit-slider-thumb {
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.25rem;
+    @apply bg-primary-6;
+    border: 0;
+    border-radius: 1rem;
+    -webkit-transition:
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition:
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    appearance: none;
+}
+
+.form-range::-webkit-slider-thumb:active {
+    @apply bg-primary-5;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    @apply bg-neutral-7;
+    border-color: transparent;
+    border-radius: 1rem;
+}
+
+.form-range::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    @apply bg-primary-9;
+    border: 0;
+    border-radius: 1rem;
+    -moz-transition:
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition:
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    appearance: none;
+}
+
+.form-range::-moz-range-thumb:active {
+    @apply bg-primary-8;
+}
+
+.form-range::-moz-range-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    @apply bg-neutral-7;
+    border-color: transparent;
+    border-radius: 1rem;
+}
+
+.form-range:disabled {
+    pointer-events: none;
+}
+
+.form-range:disabled::-webkit-slider-thumb {
+    @apply bg-neutral-4;
+}
+
+.form-range:disabled::-moz-range-thumb {
+    @apply bg-neutral-4;
+}
+
+.hanko-component::part(container) {
+    @apply bg-neutral-1 rounded-md p-0;
+}
+
+.hanko-component::part(headline1) {
+    @apply text-default;
+}
+
+.hanko-component::part(paragraph) {
+    @apply bg-transparent;
+    @apply text-default;
+}
+
+.hanko-component::part(input) {
+    @apply input-primary;
+}
+
+.hanko-component::part(button) {
+    @apply btn-primary;
+}
+
+.hanko-component::part(divider) {
+    @apply text-neutral-11;
+}
+
+.hanko-component::part(divider-text) {
+    @apply bg-transparent;
+}
+
+/* this hides web components that have not yet fully loaded */
+:not(:defined) {
+    @apply opacity-0;
+}
+
+sl-divider {
+    /* Ugly hack, see https://github.com/shoelace-style/shoelace/issues/2088 */
+    border: revert-layer;
+}

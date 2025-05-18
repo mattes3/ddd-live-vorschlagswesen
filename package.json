@@ -1,0 +1,28 @@
+{
+  "name": "@vorschlagswesen/root",
+  "version": "1.0.0",
+  "description": "Beispielcode zum Stream 'DDD Live' von Matthias Bohlen",
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "eslint packages/\\*\\*",
+    "prettier": "prettier --write .",
+    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown \"{{changed}}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@tsconfig/node21": "^21.0.3",
+    "@tsconfig/strictest": "^2.0.3",
+    "eslint": "^9.23.0",
+    "prettier": "^3.2.5",
+    "turbo": "^2.4.4",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0"
+  },
+  "keywords": [],
+  "author": "Matthias Bohlen",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5"
+}

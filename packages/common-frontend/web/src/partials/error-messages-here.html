@@ -1,0 +1,12 @@
+{{#errorMessagesPresent}}
+<div class="mb-8">
+    <p class="text-red-500">There were errors:</p>
+    <div class="prose dark:prose-invert">
+        <ul>
+            {{#errorMessages}}
+            <li class="text-red-500 font-medium">{{msg}}</li>
+            {{/errorMessages}}
+        </ul>
+    </div>
+</div>
+{{/errorMessagesPresent}}

@@ -1,0 +1,23 @@
+{
+    "extends": "../../../../config/typescript/tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "rootDir": "./",
+        "outDir": "../dist/backend",
+        "resolveJsonModule": true
+    },
+    "include": [
+        "src/**/*.ts*"
+    ],
+    "references": [
+        {
+            "path": "../../../common-frontend/backend"
+        },
+        {
+            "path": "../../../domainlogic/vorschlag"
+        },
+        {
+            "path": "../../../domain-support/logger"
+        }
+    ]
+}

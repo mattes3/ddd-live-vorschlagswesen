@@ -1,0 +1,45 @@
+{
+    "name": "@vorschlagswesen/ctr-vorschlag",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "nodemon",
+        "dev:backend": "NODE_ENV=development PORT=4041 dotenv -f .backend-env run node ./dist/backend/src/devServer.js",
+        "dev:buildAndRunDevServer": "pnpm build && pnpm dev:backend",
+        "build:backend": "cd backend && tsc",
+        "build:frontend": "cd frontend && tsc && vite build --mode development && find ../dist/frontend -name \\*.map -delete -or -name \\*.d.ts -delete",
+        "build": "pnpm build:backend && pnpm build:frontend",
+        "test": "NODE_ENV=development vitest"
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "module",
+    "exports": "./dist/backend/src/index.js",
+    "types": "./dist/backend/src/index.d.ts",
+    "devDependencies": {
+        "@radix-ui/colors": "^3.0.0",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.15",
+        "@types/mustache": "^4.2.5",
+        "@types/node": "^22.13.10",
+        "nodemon": "^3.0.3",
+        "postcss": "^8.5.3",
+        "tailwindcss": "^3.4.15",
+        "vite": "^5.0.11",
+        "vite-plugin-static-copy": "^1.0.0",
+        "vitest": "^3.0.9",
+        "windy-radix-palette": "^2.0.0-beta.7"
+    },
+    "dependencies": {
+        "@hono/node-server": "^1.13.8",
+        "@vorschlagswesen/common-frontend": "workspace:^",
+        "@vorschlagswesen/dl-vorschlag": "workspace:^",
+        "@vorschlagswesen/logger": "workspace:^",
+        "@vorschlagswesen/webtech": "workspace:^",
+        "hono": "^4.7.1",
+        "pino": "^9.6.0",
+        "ts-results-es": "^5.0.1",
+        "ulid": "^3.0.0"
+    }
+}

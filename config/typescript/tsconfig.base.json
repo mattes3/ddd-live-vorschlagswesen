@@ -1,0 +1,23 @@
+{
+    "extends": "./tsconfig.codegen-settings.json",
+    "compilerOptions": {
+        "composite": true,
+        "paths": {
+            "@vorschlagswesen/common-frontend": [
+                "./packages/common-frontend/backend"
+            ],
+            "@vorschlagswesen/ctr-vorschlag": [
+                "./packages/containers/vorschlag/backend"
+            ],
+            "@vorschlagswesen/dl-vorschlag": [
+                "./packages/domainlogic/vorschlag"
+            ],
+            "@vorschlagswesen/logger": [
+                "./packages/domain-support/logger"
+            ],
+            "@vorschlagswesen/webtech": [
+                "./packages/container-support/webtech"
+            ]
+        }
+    }
+}

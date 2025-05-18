@@ -1,0 +1,46 @@
+{
+    "name": "@vorschlagswesen/common-frontend",
+    "version": "1.0.0",
+    "author": "Matthias Bohlen",
+    "private": true,
+    "scripts": {
+        "build:make-webdirs": "mkdir -p ./dist/web/src/assets/icons",
+        "build:copy-sources": "cp -r web/src ./dist/web",
+        "build:copy-web-tsconfig": "cp web/tsconfig.json ./dist/web",
+        "build:copy-icons": "cp ../../node_modules/@shoelace-style/shoelace/dist/assets/icons/* ./dist/web/src/assets/icons",
+        "build:web": "pnpm build:make-webdirs && pnpm build:copy-sources && pnpm build:copy-web-tsconfig && pnpm build:copy-icons",
+        "build:backend": "cd backend && tsc",
+        "build": "rimraf ./dist tsconfig.tsbuildinfo && pnpm build:web && pnpm build:backend",
+        "test": "NODE_ENV=development vitest"
+    },
+    "files": [
+        "./dist"
+    ],
+    "exports": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "devDependencies": {
+        "@radix-ui/colors": "^3.0.0",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.15",
+        "@types/mustache": "^4.2.5",
+        "@types/node": "^22.13.10",
+        "nodemon": "^3.0.3",
+        "postcss": "^8.4.12",
+        "prettier": "^3.2.5",
+        "tailwindcss": "^3.4.15",
+        "vite": "^5.0.11",
+        "vite-plugin-static-copy": "^1.0.0",
+        "vitest": "^3.0.9",
+        "windy-radix-palette": "^2.0.0-beta.7"
+    },
+    "dependencies": {
+        "@floating-ui/utils": "^0.2.9",
+        "@shoelace-style/shoelace": "^2.19.1",
+        "@types/react": "^19.0.12",
+        "axios": "^1.8.4",
+        "lit": "^3.2.1",
+        "mustache": "^4.2.0",
+        "radashi": "^12.5.0"
+    }
+}

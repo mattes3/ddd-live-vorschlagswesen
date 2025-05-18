@@ -1,0 +1,59 @@
+<style>
+    .initial-fade-in {
+        opacity: 0;
+        animation: fadeInAnimation 2s forwards;
+    }
+
+    @keyframes fadeInAnimation {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{{pageMeta.title}}</title>
+<meta name="description" content="{{pageMeta.description}}" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="canonical" href="{{pageMeta.canonicalLink}}" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{pageMeta.canonicalLink}}" />
+<meta property="og:title" content="{{pageMeta.title}}" />
+<meta property="og:description" content="{{pageMeta.description}}" />
+<meta property="og:image" content="{{pageMeta.ogImagePath}}" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{pageMeta.canonicalLink}}" />
+<meta property="twitter:title" content="{{pageMeta.title}}" />
+<meta property="twitter:description" content="{{pageMeta.description}}" />
+<meta property="twitter:image" content="{{pageMeta.ogImagePath}}" />
+
+<script defer src="/assets/js/htmx.org.2.0.0.min.js"></script>
+<script defer src="/assets/js/head-support.htmx.org.2.0.0.js"></script>
+<script defer src="/user/nc/information.js"></script>
+
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark', 'sl-theme-dark');
+    } else {
+        document.documentElement.classList.remove('dark', 'sl-theme-dark');
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (e.matches) {
+            document.documentElement.classList.add('dark', 'sl-theme-dark');
+        } else {
+            document.documentElement.classList.remove('dark', 'sl-theme-dark');
+        }
+    });
+</script>

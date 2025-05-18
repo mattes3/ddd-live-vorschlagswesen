@@ -1,0 +1,14 @@
+{
+    "extends": "../../../config/typescript/tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "rootDir": "./",
+        "outDir": "./dist",
+        "resolveJsonModule": true
+    },
+    "include": [
+        "src",
+        "test"
+    ],
+    "references": []
+}

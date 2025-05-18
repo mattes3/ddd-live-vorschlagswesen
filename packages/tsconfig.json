@@ -1,0 +1,22 @@
+{
+    "extends": "../config/typescript/tsconfig.base.json",
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "./common-frontend/backend"
+        },
+        {
+            "path": "./container-support/webtech"
+        },
+        {
+            "path": "./containers/vorschlag/backend"
+        },
+        {
+            "path": "./domain-support/logger"
+        },
+        {
+            "path": "./domainlogic/vorschlag"
+        }
+    ]
+}
