@@ -34,18 +34,18 @@ export class Vorschlag {
 
     constructor(d: {
         id: string;
-        einreicherId: string;
+        einreicherId: BenutzerId;
         zustand: VorschlagsZustand;
         titel: string;
         businessVorteil: string;
-        moeglicherUmsetzungsAufwand: number;
+        moeglicherUmsetzungsAufwand: Aufwand;
         moeglicherZeitrahmen: ZeitRahmen;
         nichtUmsKonsequenzen: string;
     }) {
         this.id = d.id as VorschlagsId;
         this.businessVorteil = d.businessVorteil;
-        this.einreicherId = d.einreicherId as BenutzerId;
-        this.moeglicherUmsetzungsAufwand = d.moeglicherUmsetzungsAufwand as Aufwand;
+        this.einreicherId = d.einreicherId;
+        this.moeglicherUmsetzungsAufwand = d.moeglicherUmsetzungsAufwand;
         this.moeglicherZeitrahmen = d.moeglicherZeitrahmen;
         this.nichtUmsKonsequenzen = d.nichtUmsKonsequenzen;
         this.titel = d.titel;
