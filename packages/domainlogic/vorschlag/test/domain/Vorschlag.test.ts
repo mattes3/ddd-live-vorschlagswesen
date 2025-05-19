@@ -6,13 +6,13 @@ import { Aufwand, Vorschlag, VorschlagsId, VorschlagsZustand } from '../../src';
 
 describe('Vorschlag', () => {
     it('erstellt eine Vorschlag-Entity und reicht sie ein', () => {
-        const neueVorschlagsId = ulid();
+        const neueVorschlagsId = ulid() as VorschlagsId;
         const dummyBenutzerId = ulid() as BenutzerId;
         const dummyZeitRahmen = { von: new Date(), bis: new Date() };
         const dummyAufwand = 10 as Aufwand;
 
         const v = new Vorschlag({
-            id: neueVorschlagsId as VorschlagsId,
+            id: neueVorschlagsId,
             einreicherId: dummyBenutzerId,
             zustand: VorschlagsZustand.NEU,
             titel: 'Mehr Kaffee',

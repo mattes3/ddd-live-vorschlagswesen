@@ -61,15 +61,15 @@ export class Vorschlag {
         this.zustand = d.zustand;
     }
 
-    fuegeHinzu(): Result<Pair<void, DomainEvent<string, unknown>[]>, string> {
+    fuegeHinzu(): Result<Pair<void, DomainEvent<string, unknown>[]>, Error> {
         return Ok([undefined, [this.#createVorschlagHinzugefuegtEvent()]]);
     }
 
     reicheEin(
         eingereichtVon: BenutzerId,
-    ): Result<Pair<void, DomainEvent<string, unknown>[]>, string> {
+    ): Result<Pair<void, DomainEvent<string, unknown>[]>, Error> {
         if (this.zustand !== VorschlagsZustand.NEU) {
-            return Err('Nur neue Vorschläge können eingereicht werden.');
+            return Err(new Error('Nur neue Vorschläge können eingereicht werden.'));
         }
 
         this.einreicherId = eingereichtVon;
