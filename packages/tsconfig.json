@@ -16,6 +16,9 @@
             "path": "./containers/vorschlag/backend"
         },
         {
+            "path": "./domain-support/database"
+        },
+        {
             "path": "./domain-support/logger"
         },
         {

@@ -12,6 +12,9 @@
             "@vorschlagswesen/ctr-vorschlag": [
                 "./packages/containers/vorschlag/backend"
             ],
+            "@vorschlagswesen/database": [
+                "./packages/domain-support/database"
+            ],
             "@vorschlagswesen/dl-benutzer": [
                 "./packages/domainlogic/benutzer"
             ],
