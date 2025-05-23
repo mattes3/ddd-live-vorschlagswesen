@@ -1,0 +1,15 @@
+services:
+  # PostgreSQL Datenbank aufsetzen
+  vorschlag-db:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=vorschlag
+      - POSTGRES_PASSWORD=vorschlagpasswort
+      - POSTGRES_DB=vorschlagdb
+    # Port 6543 (localhost) zeigt auf Port 5432 im Container.
+    ports:
+      - '6543:5432'
+    # Database residiert in einem Unterverzeichnis von "."
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+    restart: unless-stopped
