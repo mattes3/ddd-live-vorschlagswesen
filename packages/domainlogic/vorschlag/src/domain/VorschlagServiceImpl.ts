@@ -7,10 +7,11 @@ import { ulid } from 'ulid';
 import { Vorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
 
 export class VorschlagServiceImpl implements VorschlagService {
-
-    constructor(private transact: <T>(
-        repoCallback: (repo: VorschlagRepository) => Promise<T>
-    ) => Promise<T>) { }
+    constructor(
+        private transact: <T>(
+            repoCallback: (repo: VorschlagRepository) => Promise<T>,
+        ) => Promise<T>,
+    ) {}
 
     async fuegeVorschlagHinzu(command: FuegeVorschlagHinzuCommand): Promise<Result<void, Error>> {
         const v = new Vorschlag({
@@ -28,10 +29,12 @@ export class VorschlagServiceImpl implements VorschlagService {
             const ergebnis = v.fuegeHinzu();
             repo.add(v);
             return ergebnis;
-        }).then(() => Ok(undefined)).catch((e) => Err(e));
+        })
+            .then(() => Ok(undefined))
+            .catch((e) => Err(e));
     }
 
-    async reicheVorschlagEin(command: ReicheVorschlagEinCommand): Promise<Result<void, Error>> {
+    async reicheVorschlagEin(_command: ReicheVorschlagEinCommand): Promise<Result<void, Error>> {
         return Err(new Error('Methode noch nicht implementiert'));
     }
 }
