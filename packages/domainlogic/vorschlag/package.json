@@ -14,9 +14,11 @@
     "exports": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
     "dependencies": {
+        "@vorschlagswesen/database": "workspace:^",
         "@vorschlagswesen/dl-benutzer": "workspace:^",
         "@vorschlagswesen/modellierung": "workspace:^",
-        "knex": "3.0.1",
+        "knex": "^3.1.0",
+        "objection": "^3.1.5",
         "pg": "^8.16.0",
         "ts-results-es": "^5.0.1",
         "ulid": "^3.0.0"

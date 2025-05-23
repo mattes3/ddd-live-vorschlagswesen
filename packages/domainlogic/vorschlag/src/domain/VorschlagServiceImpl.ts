@@ -4,7 +4,7 @@ import { VorschlagService } from './VorschlagService.js';
 import { ReicheVorschlagEinCommand } from './ReicheVorschlagEinCommand.js';
 import { VorschlagRepository } from './VorschlagRepository.js';
 import { ulid } from 'ulid';
-import { Vorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
+import { createVorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
 
 export class VorschlagServiceImpl implements VorschlagService {
     constructor(
@@ -14,7 +14,7 @@ export class VorschlagServiceImpl implements VorschlagService {
     ) {}
 
     async fuegeVorschlagHinzu(command: FuegeVorschlagHinzuCommand): Promise<Result<void, Error>> {
-        const v = new Vorschlag({
+        const v = createVorschlag({
             id: ulid() as VorschlagsId,
             einreicherId: command.aktuellerBenutzer,
             zustand: VorschlagsZustand.NEU,
@@ -25,11 +25,9 @@ export class VorschlagServiceImpl implements VorschlagService {
             nichtUmsKonsequenzen: command.nichtUmsKonsequenzen,
         });
 
-        return this.transact(async (repo) => {
-            const ergebnis = v.fuegeHinzu();
-            repo.add(v);
-            return ergebnis;
-        })
+        // TODO: Events aus `ergebnis` verschicken!
+        const ergebnis = v.fuegeHinzu();
+        return this.transact(async (repo) => repo.add(v))
             .then(() => Ok(undefined))
             .catch((e) => Err(e));
     }

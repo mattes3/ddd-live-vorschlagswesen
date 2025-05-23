@@ -2,9 +2,17 @@ import { BenutzerId } from '@vorschlagswesen/dl-benutzer';
 import { ulid } from 'ulid';
 import { describe, expect, it } from 'vitest';
 
-import { FuegeVorschlagHinzuCommand, Aufwand, Vorschlag, VorschlagsId, VorschlagsZustand, VorschlagServiceImpl, VorschlagRepository } from '../../src';
+import {
+    Aufwand,
+    FuegeVorschlagHinzuCommand,
+    VorschlagRepositoryImpl,
+    VorschlagServiceImpl,
+    initKnexAndObjection,
+} from '../../src';
 
-describe('VorschlagService', () => {
+describe('VorschlagService', async () => {
+    await initKnexAndObjection();
+
     it('fuegt einen Vorschlag hinzu', async () => {
         const dummyBenutzerId = ulid() as BenutzerId;
         const dummyZeitRahmen = { von: new Date(), bis: new Date() };
@@ -16,26 +24,12 @@ describe('VorschlagService', () => {
             nichtUmsKonsequenzen: 'dann sind wir sauer',
             businessVorteil: 'irgendein Vorteil',
             moeglicherUmsetzungsAufwand: dummyAufwand,
-            moeglicherZeitrahmen: dummyZeitRahmen
+            moeglicherZeitrahmen: dummyZeitRahmen,
         };
 
-        let gemerkt: Vorschlag | undefined = undefined;
-
-        const repo: VorschlagRepository = {
-            async add(vorschlag) {
-                gemerkt = vorschlag;
-            },
-
-            async getAll() {
-                return [];
-            },
-        };
-
-        const service = new VorschlagServiceImpl((f) => f(repo));
+        const service = new VorschlagServiceImpl(VorschlagRepositoryImpl);
 
         const ergebnis = await service.fuegeVorschlagHinzu(command);
         expect(ergebnis.isOk()).toBeTruthy();
-
-        expect(gemerkt).toBeDefined();
     });
 });

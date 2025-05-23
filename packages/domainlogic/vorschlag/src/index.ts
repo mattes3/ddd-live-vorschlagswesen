@@ -4,3 +4,6 @@ export * from './domain/Vorschlag.js';
 export * from './domain/VorschlagRepository.js';
 export * from './domain/VorschlagService.js';
 export * from './domain/VorschlagServiceImpl.js';
+
+export * from './adapter/persistence/initDatabase.js';
+export * from './adapter/persistence/VorschlagRepositoryImpl.js';
