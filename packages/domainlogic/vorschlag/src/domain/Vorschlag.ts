@@ -40,52 +40,62 @@ export type VorschlagHinzugefuegtEvent = DomainEvent<'VorschlagHinzugefuegt', Vo
 export type VorschlagEingereichtEvent = DomainEvent<'VorschlagEingereicht', VorschlagsDaten>;
 
 // @Entity
-export type Vorschlag = VorschlagsDaten & {
-    fuegeHinzu(): Result<Pair<void, DomainEvent<string, unknown>[]>, Error>;
+export class Vorschlag {
+    public id: VorschlagsId;
+    public einreicherId: BenutzerId;
+    public zustand: VorschlagsZustand;
+    public titel: string;
+    public businessVorteil: string;
+    public moeglicherUmsetzungsAufwand: Aufwand;
+    public moeglicherZeitrahmen: ZeitRahmen;
+    public nichtUmsKonsequenzen: string;
+
+    constructor(d: VorschlagsDaten) {
+        this.id = d.id;
+        this.businessVorteil = d.businessVorteil;
+        this.einreicherId = d.einreicherId;
+        this.moeglicherUmsetzungsAufwand = d.moeglicherUmsetzungsAufwand;
+        this.moeglicherZeitrahmen = d.moeglicherZeitrahmen;
+        this.nichtUmsKonsequenzen = d.nichtUmsKonsequenzen;
+        this.titel = d.titel;
+        this.zustand = d.zustand;
+    }
+
+    fuegeHinzu(): Result<Pair<void, DomainEvent<string, unknown>[]>, Error> {
+        return Ok([undefined, [this.#createVorschlagHinzugefuegtEvent()]]);
+    }
+
     reicheEin(
         eingereichtVon: BenutzerId,
-    ): Result<Pair<void, DomainEvent<string, unknown>[]>, Error>;
-};
+    ): Result<Pair<void, DomainEvent<string, unknown>[]>, Error> {
+        if (this.zustand !== VorschlagsZustand.NEU) {
+            return Err(new Error('Nur neue Vorschläge können eingereicht werden.'));
+        }
 
-// @Factory
-export function createVorschlag(d: VorschlagsDaten): Vorschlag {
-    return {
-        ...d,
+        this.einreicherId = eingereichtVon;
+        this.zustand = VorschlagsZustand.EINGEREICHT;
 
-        fuegeHinzu() {
-            return Ok([undefined, [createVorschlagHinzugefuegtEvent(this)]]);
-        },
-
-        reicheEin(eingereichtVon) {
-            if (this.zustand !== VorschlagsZustand.NEU) {
-                return Err(new Error('Nur neue Vorschläge können eingereicht werden.'));
-            }
-
-            this.einreicherId = eingereichtVon;
-            this.zustand = VorschlagsZustand.EINGEREICHT;
-
-            return Ok([undefined, [createVorschlagEingereichtEvent(this)]]);
-        },
-    };
-
-    function createVorschlagHinzugefuegtEvent(v: Vorschlag): VorschlagHinzugefuegtEvent {
-        return createEvent('VorschlagHinzugefuegt', getVorschlagsDaten(v));
+        return Ok([undefined, [this.#createVorschlagEingereichtEvent()]]);
     }
 
-    function createVorschlagEingereichtEvent(v: Vorschlag): VorschlagEingereichtEvent {
-        return createEvent('VorschlagEingereicht', getVorschlagsDaten(v));
+    #createVorschlagHinzugefuegtEvent(): VorschlagHinzugefuegtEvent {
+        return createEvent('VorschlagHinzugefuegt', this.#getVorschlagsDaten());
     }
 
-    function getVorschlagsDaten(v: Vorschlag): VorschlagsDaten {
+    #createVorschlagEingereichtEvent(): VorschlagEingereichtEvent {
+        return createEvent('VorschlagEingereicht', this.#getVorschlagsDaten());
+    }
+
+    #getVorschlagsDaten(): VorschlagsDaten {
         return {
-            id: v.id,
-            businessVorteil: v.businessVorteil,
-            einreicherId: v.einreicherId,
-            moeglicherUmsetzungsAufwand: v.moeglicherUmsetzungsAufwand,
-            moeglicherZeitrahmen: v.moeglicherZeitrahmen,
-            nichtUmsKonsequenzen: v.nichtUmsKonsequenzen,
-            titel: v.titel,
-            zustand: v.zustand,
+            businessVorteil: this.businessVorteil,
+            einreicherId: this.einreicherId,
+            id: this.id,
+            moeglicherUmsetzungsAufwand: this.moeglicherUmsetzungsAufwand,
+            moeglicherZeitrahmen: this.moeglicherZeitrahmen,
+            nichtUmsKonsequenzen: this.nichtUmsKonsequenzen,
+            titel: this.titel,
+            zustand: this.zustand,
         };
     }
 }

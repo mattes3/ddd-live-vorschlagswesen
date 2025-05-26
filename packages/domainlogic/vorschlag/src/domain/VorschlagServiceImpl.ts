@@ -4,7 +4,7 @@ import { VorschlagService } from './VorschlagService.js';
 import { ReicheVorschlagEinCommand } from './ReicheVorschlagEinCommand.js';
 import { VorschlagRepository } from './VorschlagRepository.js';
 import { ulid } from 'ulid';
-import { createVorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
+import { Vorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
 
 export class VorschlagServiceImpl implements VorschlagService {
     constructor(
@@ -14,7 +14,7 @@ export class VorschlagServiceImpl implements VorschlagService {
     ) {}
 
     async fuegeVorschlagHinzu(command: FuegeVorschlagHinzuCommand): Promise<Result<void, Error>> {
-        const v = createVorschlag({
+        const v = new Vorschlag({
             id: ulid() as VorschlagsId,
             einreicherId: command.aktuellerBenutzer,
             zustand: VorschlagsZustand.NEU,

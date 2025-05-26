@@ -2,7 +2,7 @@ import { BenutzerId } from '@vorschlagswesen/dl-benutzer';
 import { ulid } from 'ulid';
 import { describe, expect, it } from 'vitest';
 
-import { Aufwand, createVorschlag, VorschlagsId, VorschlagsZustand } from '../../src';
+import { Aufwand, Vorschlag, VorschlagsId, VorschlagsZustand } from '../../src';
 
 describe('Vorschlag', () => {
     it('erstellt eine Vorschlag-Entity und reicht sie ein', () => {
@@ -11,7 +11,7 @@ describe('Vorschlag', () => {
         const dummyZeitRahmen = { von: new Date(), bis: new Date() };
         const dummyAufwand = 10 as Aufwand;
 
-        const v = createVorschlag({
+        const v = new Vorschlag({
             id: neueVorschlagsId,
             einreicherId: dummyBenutzerId,
             zustand: VorschlagsZustand.NEU,

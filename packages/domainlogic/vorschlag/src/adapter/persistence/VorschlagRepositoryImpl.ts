@@ -1,7 +1,7 @@
 import { Model } from 'objection';
 import { withTransactionFor } from '@vorschlagswesen/database';
 
-import { createVorschlag, type VorschlagsDaten } from '../../domain/Vorschlag.js';
+import { Vorschlag, type VorschlagsDaten } from '../../domain/Vorschlag.js';
 import type { VorschlagRepository } from '../../domain/VorschlagRepository.js';
 
 interface VorschlagModel extends Omit<VorschlagsDaten, 'moeglicherZeitrahmen'> {
@@ -34,14 +34,15 @@ export const VorschlagRepositoryImpl = withTransactionFor<VorschlagRepository>((
 
     async getAll() {
         return VorschlagModel.query(trx).then((d) =>
-            d.map(({ moeglicherZeitrahmenVon, moeglicherZeitrahmenBis, ...rest }) =>
-                createVorschlag({
-                    moeglicherZeitrahmen: {
-                        von: moeglicherZeitrahmenVon,
-                        bis: moeglicherZeitrahmenBis,
-                    },
-                    ...rest,
-                }),
+            d.map(
+                ({ moeglicherZeitrahmenVon, moeglicherZeitrahmenBis, ...rest }) =>
+                    new Vorschlag({
+                        moeglicherZeitrahmen: {
+                            von: moeglicherZeitrahmenVon,
+                            bis: moeglicherZeitrahmenBis,
+                        },
+                        ...rest,
+                    }),
             ),
         );
     },
