@@ -16,7 +16,7 @@ The "Vorschlag hinzufügen" UI is designed to allow employees to submit proposal
 
 ## Functional Requirements
 
-1. The UI must allow employees to enter the following data:
+1. The UI must allow employees to enter the following data using standard HTML and HTMX:
    - Title (titel)
    - Business Advantage (businessVorteil)
    - Possible Implementation Effort (moeglicherUmsetzungsAufwand)
@@ -34,6 +34,7 @@ The "Vorschlag hinzufügen" UI is designed to allow employees to submit proposal
 ## Design Considerations
 
 - The UI should be a simple form with a submit button.
+- The UI should be based on web request handlers similar to `VorschlagIndexhandlers.ts`.
 
 ## Success Metrics
 
