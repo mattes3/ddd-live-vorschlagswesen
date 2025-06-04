@@ -192,12 +192,18 @@ importers:
       '@vorschlagswesen/common-frontend':
         specifier: workspace:^
         version: link:../../common-frontend
+      '@vorschlagswesen/dl-benutzer':
+        specifier: workspace:^
+        version: link:../../domainlogic/benutzer
       '@vorschlagswesen/dl-vorschlag':
         specifier: workspace:^
         version: link:../../domainlogic/vorschlag
       '@vorschlagswesen/logger':
         specifier: workspace:^
         version: link:../../domain-support/logger
+      '@vorschlagswesen/modellierung':
+        specifier: workspace:^
+        version: link:../../domain-support/modellierung
       '@vorschlagswesen/webtech':
         specifier: workspace:^
         version: link:../../container-support/webtech
@@ -213,6 +219,9 @@ importers:
       ulid:
         specifier: ^3.0.0
         version: 3.0.0
+      zod:
+        specifier: ^3.25.49
+        version: 3.25.49
     devDependencies:
       '@radix-ui/colors':
         specifier: ^3.0.0
@@ -315,6 +324,9 @@ importers:
       '@vorschlagswesen/dl-benutzer':
         specifier: workspace:^
         version: link:../benutzer
+      '@vorschlagswesen/logger':
+        specifier: workspace:^
+        version: link:../../domain-support/logger
       '@vorschlagswesen/modellierung':
         specifier: workspace:^
         version: link:../../domain-support/modellierung
@@ -2314,6 +2326,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@3.25.49:
+    resolution: {integrity: sha512-JMMPMy9ZBk3XFEdbM3iL1brx4NUSejd6xr3ELrrGEfGb355gjhiAWtG3K5o+AViV/3ZfkIrCzXsZn6SbLwTR8Q==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -4120,3 +4135,5 @@ snapshots:
   yaml@2.8.0: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.25.49: {}

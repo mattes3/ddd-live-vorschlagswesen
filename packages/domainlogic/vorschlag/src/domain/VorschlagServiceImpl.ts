@@ -1,10 +1,13 @@
+import { logger } from '@vorschlagswesen/logger';
+import { TechError, techError } from '@vorschlagswesen/modellierung';
 import { Err, Ok, Result } from 'ts-results-es';
-import { FuegeVorschlagHinzuCommand } from './FuegeVorschlagHinzuCommand.js';
-import { VorschlagService } from './VorschlagService.js';
-import { ReicheVorschlagEinCommand } from './ReicheVorschlagEinCommand.js';
-import { VorschlagRepository } from './VorschlagRepository.js';
 import { ulid } from 'ulid';
+
+import { FuegeVorschlagHinzuCommand } from './FuegeVorschlagHinzuCommand.js';
+import { ReicheVorschlagEinCommand } from './ReicheVorschlagEinCommand.js';
 import { Vorschlag, VorschlagsId, VorschlagsZustand } from './Vorschlag.js';
+import { VorschlagRepository } from './VorschlagRepository.js';
+import { VorschlagService } from './VorschlagService.js';
 
 export class VorschlagServiceImpl implements VorschlagService {
     constructor(
@@ -13,7 +16,9 @@ export class VorschlagServiceImpl implements VorschlagService {
         ) => Promise<T>,
     ) {}
 
-    async fuegeVorschlagHinzu(command: FuegeVorschlagHinzuCommand): Promise<Result<void, Error>> {
+    async fuegeVorschlagHinzu(
+        command: FuegeVorschlagHinzuCommand,
+    ): Promise<Result<void, TechError>> {
         const v = new Vorschlag({
             id: ulid() as VorschlagsId,
             einreicherId: command.aktuellerBenutzer,
@@ -26,13 +31,18 @@ export class VorschlagServiceImpl implements VorschlagService {
         });
 
         // TODO: Events aus `ergebnis` verschicken!
-        const ergebnis = v.fuegeHinzu();
+        v.fuegeHinzu();
         return this.transact(async (repo) => repo.add(v))
             .then(() => Ok(undefined))
-            .catch((e) => Err(e));
+            .catch((e) => {
+                logger.error(e);
+                return Err(techError('Technischer Fehler beim Speichern des Vorschlags'));
+            });
     }
 
-    async reicheVorschlagEin(_command: ReicheVorschlagEinCommand): Promise<Result<void, Error>> {
-        return Err(new Error('Methode noch nicht implementiert'));
+    async reicheVorschlagEin(
+        _command: ReicheVorschlagEinCommand,
+    ): Promise<Result<void, TechError>> {
+        return Err(techError('Methode noch nicht implementiert'));
     }
 }

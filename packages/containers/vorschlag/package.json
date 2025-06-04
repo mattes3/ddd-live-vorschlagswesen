@@ -34,12 +34,15 @@
     "dependencies": {
         "@hono/node-server": "^1.13.8",
         "@vorschlagswesen/common-frontend": "workspace:^",
+        "@vorschlagswesen/dl-benutzer": "workspace:^",
         "@vorschlagswesen/dl-vorschlag": "workspace:^",
         "@vorschlagswesen/logger": "workspace:^",
+        "@vorschlagswesen/modellierung": "workspace:^",
         "@vorschlagswesen/webtech": "workspace:^",
         "hono": "^4.7.1",
         "pino": "^9.6.0",
         "ts-results-es": "^5.0.1",
-        "ulid": "^3.0.0"
+        "ulid": "^3.0.0",
+        "zod": "^3.25.49"
     }
 }
