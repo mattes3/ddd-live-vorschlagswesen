@@ -23,7 +23,7 @@ The "Vorschlag hinzufügen" UI is designed to allow employees to submit proposal
    - Possible Time Frame (moeglicherZeitrahmen)
    - Non-Implementation Consequences (nichtUmsKonsequenzen)
 
-2. The UI must validate all fields before allowing submission.
+2. The server must validate all fields after submission and return a partial with the validation errors (if any).
 
 3. Upon successful submission, a new proposal must be created in the database with the Zustand "NEU".
 
