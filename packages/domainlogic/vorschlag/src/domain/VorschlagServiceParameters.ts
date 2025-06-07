@@ -6,15 +6,21 @@ import { zodValidationError, type ValidationError } from '@vorschlagswesen/model
 import { FuegeVorschlagHinzuCommand } from './FuegeVorschlagHinzuCommand.js';
 
 const fuegeVorschlagHinzuCommandSchema = z.object({
-    aktuellerBenutzer: z.string(),
-    titel: z.string().nonempty(),
-    businessVorteil: z.string().nonempty(),
-    moeglicherUmsetzungsAufwand: z.number().positive(),
+    aktuellerBenutzer: z.string().nonempty('Die ID des Benutzers muss angegeben sein'),
+    titel: z.string().nonempty('Bitte einen Titel angeben'),
+    businessVorteil: z.string().nonempty('Bitte den Vorteil für das Business beschreiben'),
+    moeglicherUmsetzungsAufwand: z.coerce
+        .number()
+        .positive('Der Umsetzungsaufwand sollte positiv sein'),
     moeglicherZeitrahmen: z.object({
         von: z.string().transform((str) => new Date(str)),
         bis: z.string().transform((str) => new Date(str)),
     }),
-    nichtUmsKonsequenzen: z.string().nonempty(),
+    nichtUmsKonsequenzen: z
+        .string()
+        .nonempty(
+            'Bitte die Konsequenzen für den Fall beschreiben, dass der Vorschlag nicht umgesetzt werden sollte',
+        ),
 });
 
 export type UnvalidatedFuegeVorschlagHinzuCommand = {
@@ -29,6 +35,7 @@ export type UnvalidatedFuegeVorschlagHinzuCommand = {
 export function parseFuegeVorschlagHinzuCommand(
     params: UnvalidatedFuegeVorschlagHinzuCommand,
 ): Result<FuegeVorschlagHinzuCommand, ValidationError> {
+    console.dir(params);
     const result = fuegeVorschlagHinzuCommandSchema.safeParse(params);
     return result.success
         ? Ok(result.data as FuegeVorschlagHinzuCommand)

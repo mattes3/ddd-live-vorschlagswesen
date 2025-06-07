@@ -103,7 +103,7 @@ Step    Use Case
 }
 
 .input-primary {
-    @apply bg-ui-element block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-neutral-6 text-neutral-12 placeholder-neutral-11 focus:ring-2 focus:ring-inset focus:ring-primary-10 sm:text-sm sm:leading-6;
+    @apply bg-ui-element block w-full rounded-md border-0 px-2 py-2 shadow-sm ring-1 ring-inset ring-neutral-6 text-neutral-12 placeholder-neutral-11 focus:ring-2 focus:ring-inset focus:ring-primary-10;
 }
 
 .btn-primary {

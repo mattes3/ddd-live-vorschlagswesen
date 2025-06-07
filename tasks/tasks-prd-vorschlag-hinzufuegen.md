@@ -16,7 +16,7 @@
   - [x] 1.1 Implement the form UI using standard HTML and HTMX
   - [x] 1.2 Ensure the form submits data to the backend handler
 
-- [ ] 2.0 Implement the backend handler for Vorschlag submission
-  - [ ] 2.1 Create a web request handler to process form submissions
-  - [ ] 2.2 Validate incoming data and handle errors
-  - [ ] 2.3 Store new proposals in the database with Zustand "NEU", using the existing VorschlagService.fuegeVorschlagHinzu() method. Don't create a new method in the service.
+- [x] 2.0 Implement the backend handler for Vorschlag submission
+  - [x] 2.1 Create a web request handler to process form submissions
+  - [x] 2.2 Validate incoming data and handle errors
+  - [x] 2.3 Store new proposals in the database with Zustand "NEU", using the existing VorschlagService.fuegeVorschlagHinzu() method. Don't create a new method in the service.

@@ -66,7 +66,7 @@ The generated task list _must_ follow this structure:
 
 - Unit tests should typically be placed in the `test` folder next to the `src` folder that is a parent for the code files they are testing (e.g., `src/path/to/myrequesthandler.ts` and `test/path/to/myrequesthandler.test.ts`).
 - Use `vitest` to run tests. Running without a path executes all tests found by the vite configuration.
-- Avoid using client side custom components as long as the backend can do the job.
+- Avoid using client side script code as long as the backend can do the job.
 
 ## Tasks
 

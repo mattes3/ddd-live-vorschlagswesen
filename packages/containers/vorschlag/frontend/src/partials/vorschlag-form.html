@@ -1,0 +1,99 @@
+<form
+    id="vorschlag-form"
+    class="w-full text-default"
+    data-hx-post="/vorschlag/nc/vorschlaege"
+    data-hx-target="this"
+    data-hx-swap="outerHTML"
+    data-hx-on="htmx:afterRequest: this.closest('dialog').close()"
+>
+    {{> error-messages-here }}
+
+    <div class="space-y-6">
+        <fieldset class="space-y-6">
+            <div>
+                <label for="titel" class="block">Titel</label>
+                <input
+                    type="text"
+                    name="titel"
+                    id="titel"
+                    required
+                    class="input-primary mt-1.5"
+                    value="{{titel}}"
+                />
+            </div>
+            <div>
+                <label for="businessVorteil" class="block">Business-Vorteil</label>
+                <textarea
+                    name="businessVorteil"
+                    id="businessVorteil"
+                    required
+                    class="input-primary mt-1.5"
+                >
+{{businessVorteil}}</textarea
+                >
+            </div>
+            <div>
+                <label for="moeglicherUmsetzungsAufwand" class="block"
+                    >Möglicher Umsetzungs-Aufwand (PT)</label
+                >
+                <input
+                    type="number"
+                    name="moeglicherUmsetzungsAufwand"
+                    id="moeglicherUmsetzungsAufwand"
+                    required
+                    class="input-primary mt-1.5"
+                    value="{{moeglicherUmsetzungsAufwand}}"
+                />
+            </div>
+        </fieldset>
+        <fieldset class="mt-6 w-full flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+            <div class="flex flex-col flex-1">
+                <label for="moeglicherZeitrahmenVon" class="block">Möglicher Zeitrahmen: von</label>
+                <input
+                    type="date"
+                    name="moeglicherZeitrahmenVon"
+                    id="moeglicherZeitrahmenVon"
+                    required
+                    class="input-primary mt-1.5"
+                    value="{{moeglicherZeitrahmenVon}}"
+                />
+            </div>
+            <div class="flex flex-col flex-1">
+                <label for="moeglicherZeitrahmenBis" class="block">bis</label>
+                <input
+                    type="date"
+                    name="moeglicherZeitrahmenBis"
+                    id="moeglicherZeitrahmenBis"
+                    required
+                    class="input-primary mt-1.5"
+                    value="{{moeglicherZeitrahmenBis}}"
+                />
+            </div>
+        </fieldset>
+        <fieldset class="space-y-6">
+            <div>
+                <label for="nichtUmsKonsequenzen" class="block"
+                    >Konsequenzen bei Nicht-Umsetzung</label
+                >
+                <textarea
+                    name="nichtUmsKonsequenzen"
+                    id="nichtUmsKonsequenzen"
+                    required
+                    class="input-primary mt-1.5"
+                >
+{{nichtUmsKonsequenzen}}</textarea
+                >
+            </div>
+            <div class="flex flex-row justify-end pt-4 space-x-4">
+                <button
+                    type="reset"
+                    class="btn-primary-outline"
+                    onclick="this.closest('dialog').close()"
+                >
+                    Abbrechen
+                </button>
+                <button type="submit" class="btn-primary">Vorschlag speichern</button>
+            </div>
+        </fieldset>
+    </div>
+</form>
