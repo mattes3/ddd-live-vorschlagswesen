@@ -15,14 +15,14 @@
     "@tsconfig/strictest": "^2.0.3",
     "eslint": "^9.23.0",
     "prettier": "^3.2.5",
-    "turbo": "^2.4.4",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.1",
+    "turbo": "^2.5.4",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   },
   "keywords": [],
   "author": "Matthias Bohlen",
   "license": "ISC",
-  "packageManager": "pnpm@10.6.5"
+  "packageManager": "pnpm@10.11.1"
 }
