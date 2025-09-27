@@ -1,0 +1,21 @@
+{
+    "mcpServers": {
+        "ddd-scaffolder": {
+            "command": "node",
+            "args": ["~/bin/mcp4ddd.js"],
+            "env": {
+                "BASIC_TYPES_FROM": "@vorschlagswesen/modellierung",
+                "BASIC_ERROR_TYPES_FROM": "@vorschlagswesen/modellierung",
+                "BOUNDED_CONTEXTS_PARENT_FOLDER": "packages/domainlogic"
+            },
+            "alwaysAllow": [
+                "generateEntity",
+                "generateValueObject",
+                "generateRepository",
+                "generateDomainService",
+                "generateDynamoDBRepository",
+                "generatePostgreSQLRepository"
+            ]
+        }
+    }
+}

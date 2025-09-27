@@ -7,9 +7,11 @@
     "build": "turbo run build",
     "lint": "eslint packages/\\*\\*",
     "prettier": "prettier --write .",
-    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown \"{{changed}}\""
+    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown \"{{changed}}\"",
+    "changeset": "changeset"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@eslint/js": "^9.23.0",
     "@tsconfig/node21": "^21.0.3",
     "@tsconfig/strictest": "^2.0.3",
