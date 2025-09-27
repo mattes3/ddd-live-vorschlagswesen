@@ -1,6 +1,6 @@
 {
     "name": "@vorschlagswesen/modellierung",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "private": true,
     "scripts": {
         "build": "tsc",
@@ -16,6 +16,5 @@
         "@types/node": "^22.13.10",
         "vitest": "^3.0.9"
     },
-    "dependencies": {
-    }
+    "dependencies": {}
 }
