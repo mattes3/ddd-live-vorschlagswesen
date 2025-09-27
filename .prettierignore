@@ -4,6 +4,8 @@ node_modules
 package.json
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+pnpm-workspace.yaml
 *.md
 *.yml
 *.json
