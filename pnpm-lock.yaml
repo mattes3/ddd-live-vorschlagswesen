@@ -192,6 +192,9 @@ importers:
       '@vorschlagswesen/dl-benutzer':
         specifier: workspace:^
         version: link:../../domainlogic/benutzer/domain
+      '@vorschlagswesen/dl-vorschlag':
+        specifier: workspace:^
+        version: link:../../domainlogic/vorschlag/domain
       '@vorschlagswesen/logger':
         specifier: workspace:^
         version: link:../../domain-support/logger
@@ -204,6 +207,15 @@ importers:
       hono:
         specifier: ^4.7.1
         version: 4.9.9
+      knex:
+        specifier: ^3.1.0
+        version: 3.1.0(pg@8.16.3)
+      objection:
+        specifier: ^3.1.5
+        version: 3.1.5(knex@3.1.0(pg@8.16.3))
+      pg:
+        specifier: ^8.16.3
+        version: 8.16.3
       pino:
         specifier: ^9.6.0
         version: 9.11.0

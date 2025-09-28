@@ -5,7 +5,6 @@ import { logger } from '@vorschlagswesen/logger';
 
 import { getWebApp } from './app.js';
 import { Dependencies, getDependencies } from './dependencyProvider.js';
-import { initKnexAndObjection } from '@vorschlagswesen/dl-vorschlag';
 
 let initialized = false;
 let dependencies: Dependencies;
@@ -14,7 +13,6 @@ let app: Hono;
 async function server() {
     try {
         if (!initialized) {
-            await initKnexAndObjection();
             dependencies = await getDependencies();
             app = getWebApp(dependencies);
             initialized = true;

@@ -2,8 +2,8 @@ packages:
     - packages/common-frontend
     - packages/containers/*
     - packages/container-support/*
-    - packages/domainlogic/**/application
-    - packages/domainlogic/**/domain
+    - packages/domainlogic/*/application
+    - packages/domainlogic/*/domain
     - packages/domain-support/*
 onlyBuiltDependencies:
     - esbuild

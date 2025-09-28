@@ -1,6 +1,6 @@
 import {
-    type VorschlagService,
-    parseFuegeVorschlagHinzuCommand,
+    type FuegeVorschlagHinzuService,
+    parseFuegeVorschlagHinzuServiceParams,
 } from '@vorschlagswesen/dl-vorschlag';
 import { beginWith } from '@vorschlagswesen/modellierung';
 import { HonoVariables } from '@vorschlagswesen/webtech';
@@ -9,9 +9,9 @@ import { Hono } from 'hono';
 import { render } from './renderer.js';
 
 export const VorschlagHinzufuegenHandlers = ({
-    vorschlagService,
+    fuegeVorschlagHinzu,
 }: {
-    vorschlagService: VorschlagService;
+    fuegeVorschlagHinzu: FuegeVorschlagHinzuService;
 }): Hono<{ Variables: HonoVariables }> => {
     const app = new Hono<{ Variables: HonoVariables }>();
 
@@ -19,7 +19,7 @@ export const VorschlagHinzufuegenHandlers = ({
         const data = await c.req.parseBody();
 
         const serviceResult = await beginWith({
-            aktuellerBenutzer: 'dummyBenutzerId',
+            einreicherId: 'dummyBenutzerId',
             titel: data['titel'],
             businessVorteil: data['businessVorteil'],
             moeglicherUmsetzungsAufwand: data['moeglicherUmsetzungsAufwand'],
@@ -29,8 +29,8 @@ export const VorschlagHinzufuegenHandlers = ({
             },
             nichtUmsKonsequenzen: data['nichtUmsKonsequenzen'],
         })
-            .andThen(parseFuegeVorschlagHinzuCommand)
-            .andThen((command) => vorschlagService.fuegeVorschlagHinzu(command));
+            .andThen(parseFuegeVorschlagHinzuServiceParams)
+            .andThen(fuegeVorschlagHinzu);
 
         if (serviceResult.isErr()) {
             return c.html(

@@ -1,9 +1,15 @@
-import { type HonoVariables } from '@vorschlagswesen/webtech';
 import { Hono } from 'hono';
+import { Ok } from 'ts-results-es';
 
-import { VorschlagIndexHandlers } from './adapters/webui/VorschlagIndexHandlers.js';
+import {
+    FuegeVorschlagHinzuServiceImpl,
+    initKnexAndObjection,
+    VorschlagRepositoryImpl,
+} from '@vorschlagswesen/dl-vorschlag';
+import { type HonoVariables } from '@vorschlagswesen/webtech';
+
 import { VorschlagHinzufuegenHandlers } from './adapters/webui/VorschlagHinzufuegenHandler.js';
-import { VorschlagRepositoryImpl, VorschlagServiceImpl } from '@vorschlagswesen/dl-vorschlag';
+import { VorschlagIndexHandlers } from './adapters/webui/VorschlagIndexHandlers.js';
 
 type ConfiguredHono = Hono<{ Variables: HonoVariables }>;
 
@@ -15,17 +21,23 @@ export type Dependencies = {
 };
 
 export async function getDependencies(): Promise<Dependencies> {
-    // ------------------- services --------------------
-    const vorschlagService = new VorschlagServiceImpl(VorschlagRepositoryImpl);
+    const res = await initKnexAndObjection().andThen((knex) => {
+        // ------------------- services --------------------
+        const fuegeVorschlagHinzu = FuegeVorschlagHinzuServiceImpl(VorschlagRepositoryImpl(knex));
 
-    // ------------------- handlers --------------------
+        // ------------------- handlers --------------------
 
-    const vorschlagIndexHandlers = VorschlagIndexHandlers();
-    const vorschlagHinzufuegenHandlers = VorschlagHinzufuegenHandlers({ vorschlagService });
+        const vorschlagIndexHandlers = VorschlagIndexHandlers();
+        const vorschlagHinzufuegenHandlers = VorschlagHinzufuegenHandlers({
+            fuegeVorschlagHinzu,
+        });
 
-    const handlers = { vorschlagIndexHandlers, vorschlagHinzufuegenHandlers };
+        const handlers = { vorschlagIndexHandlers, vorschlagHinzufuegenHandlers };
 
-    // ------------------- combine all --------------------
+        // ------------------- combine all --------------------
 
-    return { handlers };
+        return Ok({ handlers });
+    });
+
+    return res.isOk() ? res.value : Promise.reject(res.error);
 }
