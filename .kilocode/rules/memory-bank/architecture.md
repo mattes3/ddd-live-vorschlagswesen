@@ -15,7 +15,10 @@ The project follows a strict Domain-Driven Design (DDD) approach with hexagonal 
 
 #### Domain Logic (`packages/domainlogic/`)
 - `benutzer/`: User domain (Benutzer entity)
-- `vorschlag/`: Proposal domain (Vorschlag entity, services, repositories)
+- `vorschlag/domain/`: Proposal domain package (Vorschlag aggregate, value objects, repositories)
+  - Separate package: `@vorschlagswesen/dl-vorschlag`
+  - Contains pure domain logic with no external dependencies
+  - Includes database migrations via Knex
 
 #### Infrastructure Support (`packages/domain-support/`)
 - `database/`: Database connection and transaction helpers
@@ -35,17 +38,20 @@ The project follows a strict Domain-Driven Design (DDD) approach with hexagonal 
 ## Key Architectural Decisions
 
 ### Domain-Driven Design Patterns
-- **Entities**: Vorschlag with business logic methods
-- **Value Objects**: VorschlagsZustand enum, Aufwand, ZeitRahmen
-- **Domain Events**: VorschlagHinzugefuegtEvent, VorschlagEingereichtEvent
-- **Domain Services**: VorschlagService for use case orchestration
-- **Repositories**: VorschlagRepository interface with PostgreSQL implementation
+- **Aggregate Root**: Vorschlag entity with business logic methods (einreichen, genehmigen, ablehnen, verschieben)
+- **Value Objects**: VorschlagsZustand enum, Aufwand (branded number), ZeitRahmen (date range)
+- **Domain Events**: VorschlagHinzugefuegtEvent, VorschlagEingereichtEvent (foundation ready)
+- **Domain Services**: VorschlagService for use case orchestration (to be implemented)
+- **Repositories**: VorschlagRepository interface with PostgreSQL implementation (to be implemented)
 
 ### Hexagonal Architecture
-- **Domain Layer**: Pure business logic in `domainlogic/` packages
-- **Application Layer**: Use case services coordinating domain objects
+- **Domain Layer**: Pure business logic in `domainlogic/*/domain/` packages
+  - `packages/domainlogic/vorschlag/domain/` - Complete domain package
+  - Contains entities, value objects, and domain interfaces
+  - Zero external dependencies (except domain modeling utilities)
+- **Application Layer**: Use case services coordinating domain objects (to be added)
 - **Infrastructure Layer**: Adapters for persistence (`adapter/persistence/`) and web UI (`adapter/webui/`)
-- **Presentation Layer**: Hono routes and HTMX-powered frontend
+- **Presentation Layer**: Hono routes and HTMX-powered frontend in `packages/containers/`
 
 ### Technical Stack Decisions
 - **Backend Framework**: Hono for lightweight, fast HTTP handling
@@ -60,32 +66,50 @@ The project follows a strict Domain-Driven Design (DDD) approach with hexagonal 
 ### Domain Layer Flow
 ```
 WebUI Adapter → Domain Service → Repository Interface → Persistence Adapter → Database
+                      ↓                    ↓
+              Vorschlag Aggregate    Domain Package
+              (@vorschlagswesen/dl-vorschlag)
 ```
 
-### Container Structure
-Each container follows the same pattern:
-- `backend/`: Hono application with routes and adapters
-- `frontend/`: Vite-built static assets with HTMX integration
+### Package Structure
+Each bounded context follows the layered pattern:
+- `domainlogic/*/domain/`: Pure domain packages with own package.json
+- `containers/*/`: Hono application containers with routes and adapters
+  - `backend/`: Hono application with routes and adapters
+  - `frontend/`: Vite-built static assets with HTMX integration
 
 ### Dependency Direction
 Dependencies flow inward from infrastructure to domain:
-- Infrastructure depends on domain interfaces
-- Domain has no external dependencies
-- Application services coordinate domain objects
+- Containers depend on domain packages via workspace dependencies
+- Domain packages have no external dependencies (except modeling utilities)
+- Application services coordinate domain objects (layer to be added)
 
 ## Critical Implementation Paths
 
-### Proposal Submission
+### Current Domain Model Structure
+```
+packages/domainlogic/vorschlag/domain/
+├── src/
+│   ├── domainmodel/
+│   │   ├── Vorschlag.ts          # Aggregate root with factory function
+│   │   └── VorschlagTypes.ts     # Value objects and enums
+│   └── adapter/
+│       └── persistence/          # Repository implementations (to be added)
+└── test/
+    └── Vorschlag.spec.ts         # Domain tests
+```
+
+### Proposal Submission (Implementation Path)
 1. HTMX form posts to `/vorschlag/nc/vorschlaege`
 2. VorschlagHinzufuegenHandler receives request
-3. Domain service validates and creates Vorschlag entity
-4. Repository persists to PostgreSQL
-5. Domain events published (for future event handling)
+3. Domain service validates and creates Vorschlag entity via `createVorschlag()` factory
+4. Repository persists to PostgreSQL (adapter to be implemented)
+5. Domain events published (foundation ready)
 
-### Proposal Listing
+### Proposal Listing (Implementation Path)
 1. GET `/vorschlag/` renders index page
 2. HTMX loads proposal list dynamically
-3. Repository fetches all Vorschlag entities
+3. Repository fetches all Vorschlag entities (implementation pending)
 4. Handlebars templates render German UI
 
 ## Design Patterns in Use

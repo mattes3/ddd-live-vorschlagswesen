@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "build": "tsc",
-        "test": "NODE_ENV=\"development\" vitest",
+        "test": "NODE_ENV=\"development\" tsx --test --test-reporter spec test/*.spec.ts",
+        "test:watch": "tsx --test --test-reporter spec --watch test/*.spec.ts",
         "knex": "tsx ../../../node_modules/knex/bin/cli.js"
     },
     "files": [
@@ -14,14 +15,17 @@
     "exports": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
     "dependencies": {
+        "@logtape/logtape": "^1.1.1",
         "@vorschlagswesen/database": "workspace:^",
         "@vorschlagswesen/dl-benutzer": "workspace:^",
-        "@vorschlagswesen/logger": "workspace:^",
         "@vorschlagswesen/modellierung": "workspace:^",
         "knex": "^3.1.0",
         "objection": "^3.1.5",
         "pg": "^8.16.3",
         "ts-results-es": "^5.0.1",
         "ulid": "^3.0.0"
+    },
+    "devDependencies": {
+        "expect": "^30.2.0"
     }
 }

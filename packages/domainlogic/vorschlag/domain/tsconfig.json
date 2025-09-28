@@ -3,7 +3,7 @@
     "compilerOptions": {
         "baseUrl": "./",
         "rootDir": "./",
-        "outDir": "../dist/backend",
+        "outDir": "./dist",
         "resolveJsonModule": true
     },
     "include": [
@@ -11,22 +11,16 @@
     ],
     "references": [
         {
-            "path": "../../../common-frontend/backend"
+            "path": "../../../domain-support/database"
         },
         {
-            "path": "../../../domainlogic/benutzer/domain"
-        },
-        {
-            "path": "../../../domainlogic/vorschlag/domain"
+            "path": "../../benutzer/domain"
         },
         {
             "path": "../../../domain-support/logger"
         },
         {
             "path": "../../../domain-support/modellierung"
-        },
-        {
-            "path": "../../../container-support/webtech"
         }
     ]
 }

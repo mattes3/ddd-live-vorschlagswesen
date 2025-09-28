@@ -25,10 +25,10 @@
             "path": "./domain-support/modellierung"
         },
         {
-            "path": "./domainlogic/benutzer"
+            "path": "./domainlogic/benutzer/domain"
         },
         {
-            "path": "./domainlogic/vorschlag"
+            "path": "./domainlogic/vorschlag/domain"
         }
     ]
 }

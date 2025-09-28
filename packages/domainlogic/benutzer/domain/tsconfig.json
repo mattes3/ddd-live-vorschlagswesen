@@ -1,5 +1,5 @@
 {
-    "extends": "../../../config/typescript/tsconfig.base.json",
+    "extends": "../../../../config/typescript/tsconfig.base.json",
     "compilerOptions": {
         "baseUrl": "./",
         "rootDir": "./",
@@ -11,7 +11,7 @@
     ],
     "references": [
         {
-            "path": "../../domain-support/modellierung"
+            "path": "../../../domain-support/modellierung"
         }
     ]
 }
