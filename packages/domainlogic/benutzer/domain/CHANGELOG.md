@@ -1,4 +1,4 @@
-# @vorschlagswesen/common-frontend
+# @vorschlagswesen/dl-benutzer
 
 ## 2.0.0
 
@@ -8,8 +8,7 @@
 
     Die Bounded-Context-Packages haben neuerdings noch ein weiteres Unterverzeichnis für den Layer, also `domain` oder `application`.
 
-## 1.0.1
-
 ### Patch Changes
 
-- 2f59e00: Aider durch Kilocode als KI-Assistent ersetzt.
+- Updated dependencies [8a89b6d]
+    - @vorschlagswesen/modellierung@2.0.0
