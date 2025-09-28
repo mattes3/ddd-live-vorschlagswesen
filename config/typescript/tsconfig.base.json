@@ -16,10 +16,10 @@
                 "./packages/domain-support/database"
             ],
             "@vorschlagswesen/dl-benutzer": [
-                "./packages/domainlogic/benutzer"
+                "./packages/domainlogic/benutzer/domain"
             ],
             "@vorschlagswesen/dl-vorschlag": [
-                "./packages/domainlogic/vorschlag"
+                "./packages/domainlogic/vorschlag/domain"
             ],
             "@vorschlagswesen/logger": [
                 "./packages/domain-support/logger"

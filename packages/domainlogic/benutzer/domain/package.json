@@ -3,8 +3,7 @@
     "version": "1.0.1",
     "private": true,
     "scripts": {
-        "build": "tsc",
-        "test": "NODE_ENV=\"development\" vitest"
+        "build": "tsc"
     },
     "files": [
         "dist"
@@ -14,7 +13,7 @@
     "types": "./dist/src/index.d.ts",
     "dependencies": {
         "@vorschlagswesen/modellierung": "workspace:^",
-        "ts-results-es": "^5.0.1",
+        "ts-results-es": "^6.0.0",
         "ulid": "^3.0.0"
     }
 }

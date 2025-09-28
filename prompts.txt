@@ -1,0 +1,66 @@
+# Beispiel-Prompts für einen KI-Assistenten (z.B. Kilocode) zum Umgang mit mcp4ddd
+
+Ich arbeite im Bounded Context "vorschlag". Erzeuge ein DDD-Aggregate namens "Vorschlag" mit folgenden Attributen:
+
+    einreicherId: BenutzerId;
+    zustand: VorschlagsZustand;
+    titel: string;
+    businessVorteil: string;
+    moeglicherUmsetzungsAufwand: Aufwand;
+    moeglicherZeitrahmen: ZeitRahmen;
+    nichtUmsKonsequenzen: string;
+
+Für die Datentypen kannst Du folgendes nehmen:
+
+enum VorschlagsZustand {
+    NEU = 'NEU',
+    EINGEREICHT = 'EINGEREICHT',
+    GENEHMIGT = 'GENEHMIGT',
+    ABGELEHNT = 'ABGELEHNT',
+    ARCHIVIERT = 'ARCHIVIERT',
+}
+
+type Aufwand = Branded<number, 'Personentage'>;
+
+type ZeitRahmen = {
+    von: Date;
+    bis: Date;
+};
+
+Verwende den ddd-scaffolder MCP.
+
+---
+
+Gib dem Aggregate die folgenden Businessmethoden:
+
+reicheEin(): Result<void,FalscherVorschlagsZustand>
+genehmige(): Result<void,FalscherVorschlagsZustand>
+lehneAb(grund: string): Result<void,FalscherVorschlagsZustand>
+verschiebe(neuerZeitrahmen: ZeitRahmen): Result<void,FalscherVorschlagsZustand>
+archiviere(): Result<void,FalscherVorschlagsZustand>
+
+Den Typ `Result` importiere aus `ts-results-es`.
+
+Für den Typ `FalscherVorschlagsZustand` benutze `SingleError`, und zum Erzeugen eines solchen Fehlers benutze `singleError()`.
+
+---
+
+Nun erzeuge noch ein Repository-Interface für das Aggregate `Vorschlag`, gleich mit passender Methode:
+
+- findVorschlaegeByZustand(zustand: VorschlagsZustand): Vorschlag[]
+
+---
+
+Erzeuge nun eine PostgreSQL-Implementierung für das neue VorschlagRepository.
+
+---
+
+Ich arbeite im Bounded Context "vorschlag". Erzeuge einen Application-Service, der einen neuen Vorschlag hinzufügen kann. Gib ihm als Parameter alle Daten, die für einen neuen Vorschlag erforderlich sind.
+
+Der Service sollte dann den Vorschlag konstruieren und ihn dem Repository hinzufügen.
+
+---
+
+Ich arbeite im Bounded Context "vorschlag". Erzeuge noch einen Application-Service, der einen bereits eingereichten Vorschlag genehmigen kann. Gib ihm als Parameter die ID des zu genehmigenden Vorschlags mit.
+
+Der Service sollte dann den Vorschlag im Repository finden, danach die Methode `Vorschlag.genehmige()` aufrufen, und dann den Vorschlag im Repository aktualisieren.

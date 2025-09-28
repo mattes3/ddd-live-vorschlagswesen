@@ -3,8 +3,7 @@
     "version": "1.0.1",
     "private": true,
     "scripts": {
-        "build": "tsc",
-        "test": "NODE_ENV=development vitest"
+        "build": "tsc"
     },
     "files": [
         "dist/src"
@@ -13,8 +12,7 @@
     "exports": "./dist/src/index.js",
     "types": "./dist/src/index.d.ts",
     "devDependencies": {
-        "@types/node": "^22.13.10",
-        "vitest": "^3.0.9"
+        "@types/node": "^22.13.10"
     },
     "dependencies": {}
 }
