@@ -30,7 +30,7 @@ export const VorschlagHinzufuegenHandlers = ({
             nichtUmsKonsequenzen: data['nichtUmsKonsequenzen'],
         })
             .andThen(parseFuegeVorschlagHinzuCommand)
-            .andThen((command) => vorschlagService.fuegeVorschlagHinzu(command)).promise;
+            .andThen((command) => vorschlagService.fuegeVorschlagHinzu(command));
 
         if (serviceResult.isErr()) {
             return c.html(

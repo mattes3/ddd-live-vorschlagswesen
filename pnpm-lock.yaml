@@ -141,8 +141,8 @@ importers:
         specifier: ^9.6.0
         version: 9.11.0
       ts-results-es:
-        specifier: ^5.0.1
-        version: 5.0.1
+        specifier: ^6.0.0
+        version: 6.0.0
       ulid:
         specifier: ^3.0.0
         version: 3.0.1
@@ -208,8 +208,8 @@ importers:
         specifier: ^9.6.0
         version: 9.11.0
       ts-results-es:
-        specifier: ^5.0.1
-        version: 5.0.1
+        specifier: ^6.0.0
+        version: 6.0.0
       ulid:
         specifier: ^3.0.0
         version: 3.0.1
@@ -292,8 +292,8 @@ importers:
         specifier: workspace:^
         version: link:../../../domain-support/modellierung
       ts-results-es:
-        specifier: ^5.0.1
-        version: 5.0.1
+        specifier: ^6.0.0
+        version: 6.0.0
       ulid:
         specifier: ^3.0.0
         version: 3.0.1
@@ -322,8 +322,8 @@ importers:
         specifier: ^8.16.3
         version: 8.16.3
       ts-results-es:
-        specifier: ^5.0.1
-        version: 5.0.1
+        specifier: ^6.0.0
+        version: 6.0.0
       ulid:
         specifier: ^3.0.0
         version: 3.0.1
@@ -2380,8 +2380,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  ts-results-es@5.0.1:
-    resolution: {integrity: sha512-HjX/7HxQe2bXkbp8pHTjy4Ir9eHIDnDDsLDphhGqy6I9iZ/vD4QXWEIlrVRZsEX+kS2jIiiF/mnl0nKnPTiYFw==}
+  ts-results-es@6.0.0:
+    resolution: {integrity: sha512-mBiJ5nfIvahqf+Jy8kIez/OhMwvyjA+xU9eoOag2Yt3/TVzJ6jKKGyb1UV+53e8afMrUE64mkJNM0KuLpdRBhQ==}
 
   tsx@4.20.6:
     resolution: {integrity: sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==}
@@ -4538,7 +4538,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-results-es@5.0.1: {}
+  ts-results-es@6.0.0: {}
 
   tsx@4.20.6:
     dependencies:

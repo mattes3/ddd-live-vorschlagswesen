@@ -123,10 +123,10 @@ describe('FuegeVorschlagHinzuService', () => {
 
             const r = await beginWith(testParams)
                 .andThen(parseFuegeVorschlagHinzuServiceParams)
-                .andThen(fuegeVorschlagHinzu).promise;
+                .andThen(fuegeVorschlagHinzu);
 
             expect(r.isOk()).toBeTruthy();
             return Ok.EMPTY;
-        }).promise;
+        });
     });
 });

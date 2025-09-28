@@ -36,7 +36,7 @@
         "@vorschlagswesen/webtech": "workspace:^",
         "hono": "^4.7.1",
         "pino": "^9.6.0",
-        "ts-results-es": "^5.0.1",
+        "ts-results-es": "^6.0.0",
         "ulid": "^3.0.0"
     }
 }
