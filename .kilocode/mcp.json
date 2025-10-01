@@ -4,7 +4,7 @@
       "command": "/bin/sh",
       "args": [
         "-c",
-        "node ~/bin/mcp4ddd.js"
+        "node ~/bin/mcp4ddd.mjs"
       ],
       "env": {
         "BASIC_TYPES_FROM": "@vorschlagswesen/modellierung",
